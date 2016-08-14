@@ -1,32 +1,26 @@
 /**
  * Created by liuyifeng on 16/8/14.
  */
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {connect} from 'react-redux';
+import {Router, Scene, ActionConst,} from 'react-native-router-flux';
 
-import {Splash} from './../../components';
-import * as actions from './actions';
-import CommonStyles from '../../styles/common';
+import {Splash, Home} from './views';
 
-const styles = StyleSheet.create({
-    container: {
-        ...CommonStyles.defaultContainer
-    }
-});
+const RouterWithRedux = connect()(Router);
 
 const App = (props) => {
     return (
-        <View style={styles.container}>
-            <Splash logo={require("../../../image/logo.png")} description="轻松过驾考"/>
-        </View>
+        <RouterWithRedux>
+            <Scene key="root">
+                <Scene key="splash" component={Splash} initial={true} hideNavBar={true}
+                       logo={require("../../../image/logo.png")}
+                       description="轻松过驾考"/>
+                <Scene key="home" component={Home} title="驾考题库" hideNavBar={false} type={ActionConst.REPLACE}/>
+            </Scene>
+        </RouterWithRedux>
     )
-}
+};
 
-App.displayName = 'App';
-App.propTypes = {};
-
-export default connect(
-    (state) => ({}),
-    (dispatch) => ({})
-)(App);
+export default App;
