@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "postinstall": "remotedev-debugger --hostname 192.168.0.101 --port 5678 --injectserver"
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "react": "15.2.1",

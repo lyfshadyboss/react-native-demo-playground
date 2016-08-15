@@ -11,7 +11,7 @@ const enhancer = compose(
     applyMiddleware(thunk),
     devTools({
         name: Platform.OS,
-        hostname: '192.168.0.101',
+        hostname: 'localhost',
         port: 5678
     })
 );
